@@ -1,51 +1,69 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class TicTacToe {
 	
-	enum State {EMPTY, PLAYER_ONE, PLAYER_TWO;}
-
-	static Board board;
-	static State currentPlayer = TicTacToe.State.PLAYER_ONE;
-	static int movesMade = 0;
+	enum State {
+		EMPTY (false), 
+		PLAYER_ONE (false), 
+		PLAYER_TWO (false);
+		State(boolean human) {
+		}
+	}
+	//Scanner scanner = new Scanner(System.in);
+	
+	static Player currentPlayer;
+	public static int movesMade = 0;
+	public static Board board = new Board();
+	static ComputerPlayer cp = new ComputerPlayer(TicTacToe.State.PLAYER_TWO);
+	static HumanPlayer hp = new HumanPlayer(TicTacToe.State.PLAYER_ONE);
 	
 	public static void main(String[] args) {
-		//ComputerPlayer computer = new ComputerPlayer();
-		Board board = new Board();
-		ComputerPlayer cp = new ComputerPlayer();
-		HumanPlayer hp = new HumanPlayer();
-		hp.setState(TicTacToe.State.PLAYER_ONE);
-		cp.setState(TicTacToe.State.PLAYER_TWO);
+	
+		currentPlayer = hp;
 		board.initialize();
 		board.display();
 		while (!board.gameWon(TicTacToe.State.PLAYER_ONE) && !board.gameWon(TicTacToe.State.PLAYER_TWO)) {
-			playGame();
+		playGame();
 		}
+	
+	//	System.out.println((board.gameWon(TicTacToe.State.PLAYER_ONE)) + " " + (board.gameWon(TicTacToe.State.PLAYER_TWO)));
 
 	}
 	
-	static void move(State state, int pos) {
-		//board.cells[pos].state = state;
-		movesMade++;
-		updateGame();
-	}
+	
+
+	
+//	static void move(State state, int pos) {
+//		board.cells[pos].state = state;
+//		board.cells[pos].setMarker();
+//		movesMade++;
+//		updateGame();
+//	}
 	
 	static void updateGame() {
-		if (currentPlayer == TicTacToe.State.PLAYER_ONE) {
-			currentPlayer = TicTacToe.State.PLAYER_TWO;
+		if (currentPlayer == hp) {
+			currentPlayer = cp;
 		}
 		
 		else {
-			currentPlayer = TicTacToe.State.PLAYER_ONE;
+			currentPlayer = hp;
 		}
 	}
 	
 	static void playGame() {
-		Scanner in = new Scanner(System.in);
-		int pos = in.nextInt();
-		move(currentPlayer, pos);
-		board.display();
+		if (currentPlayer == hp) {
+			hp.move();
+		}
+		else {
+			cp.move();
+		}
+		
+		
+		
+//		Scanner in = new Scanner(System.in);
+//		System.out.println(currentPlayer);
+//		int pos = in.nextInt() - 1;
+//		move(currentPlayer, pos);
+//		board.display();
 	}
 
 }

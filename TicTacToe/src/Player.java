@@ -1,13 +1,20 @@
 
+
 public abstract class Player {
-	
-	TicTacToe.State state;
-	
-	void setState(TicTacToe.State state) {
-		this.state = state;
+
+	Player() {
+		
 	}
 	
-	void move() {
-		//
-	}
+//	Player(TicTacToe.State a) {
+//		state = a;
+//	}
+//	
+//	static void move(int pos) {
+//		TicTacToe.board.cells[pos].state = state;
+//		TicTacToe.board.cells[pos].setMarker();
+//		TicTacToe.movesMade++;
+//		TicTacToe.board.display();
+//		TicTacToe.updateGame();
+//	}
 }

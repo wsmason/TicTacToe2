@@ -44,8 +44,7 @@ public class Board {
 		}
 		return possibleMoves;
 	}
-	
-	
+		
 	boolean gameWon(TicTacToe.State state) {
 		return (
 				
@@ -66,6 +65,7 @@ public class Board {
 				
 				);
 	}
+
 	
 	
 }

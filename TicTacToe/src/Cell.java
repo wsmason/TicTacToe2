@@ -13,7 +13,7 @@ public class Cell {
 		state = TicTacToe.State.EMPTY;
 	}
 	
-	public void setMarker() {
+	public void setMarker() { 
 		
 		switch (state) {
 		
